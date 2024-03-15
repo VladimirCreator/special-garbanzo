@@ -1,2 +1,14 @@
 image:
   file: .gitpod.dockerfile
+
+tasks:
+  - init: |
+      cp .env.example .env &&
+      sed -i "s#APP_URL=http://localhost#APP_URL=$(gp url 8000)#g" .env
+      sed -i "s#GITPOD_VITE_URL=#GITPOD_VITE_URL=$(gp url 5173)#g" .env
+      composer install --ignore-platform-reqs
+      php artisan key:generate
+      php artisan storage:link
+      php artisan serve
+  - command: |
+      npm install && npm run dev
