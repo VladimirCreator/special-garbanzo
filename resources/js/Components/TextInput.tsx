@@ -1,30 +1,37 @@
-import { forwardRef, useEffect, useImperativeHandle, useRef, InputHTMLAttributes } from 'react';
+import {
+	forwardRef,
+	useRef,
+	useEffect,
+	useImperativeHandle,
+	InputHTMLAttributes
+} from 'react'
+import { twMerge } from 'tailwind-merge'
 
-export default forwardRef(function TextInput(
-    { type = 'text', className = '', isFocused = false, ...props }: InputHTMLAttributes<HTMLInputElement> & { isFocused?: boolean },
-    ref
-) {
-    const localRef = useRef<HTMLInputElement>(null);
+type Props = InputHTMLAttributes<HTMLInputElement> &
+	Readonly<{ isFocused?: boolean }>
 
-    useImperativeHandle(ref, () => ({
-        focus: () => localRef.current?.focus(),
-    }));
+export const TextInput = forwardRef(
+	function TextInput(props: Props, ref) {
+		const { type = 'text', className, isFocused = false, ...rest } = props
+		const localRef = useRef<HTMLInputElement>(null);
 
-    useEffect(() => {
-        if (isFocused) {
-            localRef.current?.focus();
-        }
-    }, []);
+		useImperativeHandle(ref, () => ({
+			focus: () => localRef.current?.focus(),
+		}));
 
-    return (
-        <input
-            {...props}
-            type={type}
-            className={
-                'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm ' +
-                className
-            }
-            ref={localRef}
-        />
-    );
-});
+		useEffect(() => {
+			if (isFocused) {
+				localRef.current?.focus();
+			}
+		}, []);
+
+		return (
+			<input ref={localRef} {...rest}
+				className={
+					twMerge('text-base leading-6 text-[rgb(143,144,166)] bg-[rgb(250,250,252)] border border-[rgb(228,228,235)] focus:border-indigo-500 focus:ring-indigo-500 rounded-lg', className)
+				}
+				type={type}
+			/>
+		)
+	}
+)
