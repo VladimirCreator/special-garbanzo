@@ -10,7 +10,7 @@ jobs:
       pages: write
     steps:
       - uses: actions/checkout@v4
-      - run: composer install
+      - run: composer install --ignore-platform-reqs
       - run: npm ci
       - run: php artisan export
       - uses: actions/upload-pages-artifact@v3
