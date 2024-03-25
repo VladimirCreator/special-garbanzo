@@ -8,6 +8,11 @@ const config: UserConfig = {
 	build: {
 		outDir: 'public/build'
 	},
+	resolve: {
+		alias: {
+			'@': './resources/js'
+		}
+	},
 	plugins: [
 		react()
 	]
