@@ -15,5 +15,5 @@ jobs:
       - run: npx vite build
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: public/build
       - uses: actions/deploy-pages@v4
