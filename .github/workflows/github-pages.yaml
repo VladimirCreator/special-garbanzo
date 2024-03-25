@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: composer install --ignore-platform-reqs
       - run: npm ci
-      - run: npx vite build -- --config 'vite.github-pages.config.ts'
+      - run: npx vite build --config 'vite.github-pages.config.ts'
       - uses: actions/upload-pages-artifact@v3
         with:
           path: public/build
