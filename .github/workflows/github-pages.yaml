@@ -20,6 +20,8 @@ jobs:
           php artisan storage:link
           php artisan serve &
           npm run dev &
+        env:
+          LARAVEL_BYPASS_ENV_CHECK: 1
       - run: php artisan export
       - uses: actions/upload-pages-artifact@v3
         with:
