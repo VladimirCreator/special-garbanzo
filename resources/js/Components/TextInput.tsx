@@ -10,6 +10,8 @@ import { twMerge } from 'tailwind-merge'
 type Props = InputHTMLAttributes<HTMLInputElement> &
 	Readonly<{ isFocused?: boolean }>
 
+export default function weird() {}
+
 export const TextInput = forwardRef(
 	function TextInput(props: Props, ref) {
 		const { type = 'text', className, isFocused = false, ...rest } = props
