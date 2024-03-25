@@ -1,13 +1,17 @@
 import { FormEvent, useRef } from 'react'
-import { Head, useForm } from '@inertiajs/react'
+//import { Head, useForm } from '@inertiajs/react'
 
 import { Card, CardAdd } from '@/Components/Card'
 import { CardForm } from '@/Components/CardForm'
 import { PageProps } from '@/types'
 
+const data = {}
+const setData = () => undefined
+const processing = false
+
 export default function Welcome(props: { cards: any[] } & PageProps<{ laravelVersion: string, phpVersion: string }>) {
 	const { auth, laravelVersion, phpVersion, cards = [] } = props
-
+/*
 	const { data, setData, post, processing } = useForm({
 		card_number: '',
 		expiration_year: '',
@@ -16,8 +20,8 @@ export default function Welcome(props: { cards: any[] } & PageProps<{ laravelVer
 		cvv_cvc: '',
 		targetNumber: 0
 	})
-
-	function handleChange(e: FormEvent<HTMLFormElement>) {
+*/
+	function handleChange(e: FormEvent<HTMLFormElement>) {/*
 		const { target } = e
 		const hasId = 'id' in target
 		const hasValue = 'value' in target
@@ -28,17 +32,15 @@ export default function Welcome(props: { cards: any[] } & PageProps<{ laravelVer
 			// @ts-expect-error
 			[target.id]: target.value,
 			expiration_date: `20${prev.expiration_year}-${prev.expiration_month.padStart(2, '0')}-01`
-		}))
-		console.log(data)
+		}))*/
 	}
 
 	function handleSubmit(e: FormEvent<HTMLFormElement>) { e.preventDefault()
-		post('/')
+		//post('/')
 	}
 
 	return (
 		<>
-			<Head title='Баланс' />
 			<form onSubmit={handleSubmit} onChange={handleChange} className='flex flex-col
 				space-y-[30px]
 				max-w-[90%]
