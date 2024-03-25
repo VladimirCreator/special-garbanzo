@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import type { UserConfig } from 'vite'
+import path from 'path'
 
 import react from '@vitejs/plugin-react'
 
@@ -10,7 +11,7 @@ const config: UserConfig = {
 	},
 	resolve: {
 		alias: {
-			'@': './resources/js'
+			'@': path.resolve(__dirname, './resources/js')
 		}
 	},
 	plugins: [
